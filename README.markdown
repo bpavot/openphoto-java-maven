@@ -6,7 +6,8 @@ For library usage, refer to https://github.com/openphoto/openphoto-java
 To use in your project : 
 
 - build the project and install in your local repository : 
-	mvn clean install
+
+		mvn clean install
 
 - Add dependency to your project pom.xml :
 
