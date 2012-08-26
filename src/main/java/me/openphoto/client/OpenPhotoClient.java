@@ -69,6 +69,19 @@ public class OpenPhotoClient {
 		Response response = request.send();
 		return response.getBody();
 	}
+	
+	       public String rawGetNoAuth(String endpoint, Map<String, String> parameters) {
+	                SimpleRequest request = new SimpleRequest(Verb.GET, host + endpoint);
+
+	                if (parameters != null) {
+	                        for (Entry<String, String> parameter : parameters.entrySet()) {
+	                                request.addQuerystringParameter(parameter.getKey(), parameter.getValue());
+	                        }
+	                }
+	                
+	                SimpleResponse response = request.send();
+	                return response.getBody();
+	        }
 
 	private boolean checkConfigurationProperties() {
 		if ((ConfigurationProperties.CONSUMER_KEY != null && ConfigurationProperties.CONSUMER_KEY.length() > 0)
