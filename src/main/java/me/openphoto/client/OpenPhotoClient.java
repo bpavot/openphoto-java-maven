@@ -5,6 +5,8 @@ import java.util.Map.Entry;
 
 import me.openphoto.client.util.ConfigurationProperties;
 import me.openphoto.client.util.OpenPhotoAPI;
+import me.openphoto.client.util.scribe.SimpleRequest;
+import me.openphoto.client.util.scribe.SimpleResponse;
 
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
@@ -70,18 +72,25 @@ public class OpenPhotoClient {
 		return response.getBody();
 	}
 	
-	       public String rawGetNoAuth(String endpoint, Map<String, String> parameters) {
-	                SimpleRequest request = new SimpleRequest(Verb.GET, host + endpoint);
+	/**
+	 * Raw Get with disabled authentication
+	 * For testing purpose only...
+	 * @param endpoint
+	 * @param parameters
+	 * @return
+	 */
+	public String rawGetNoAuth(String endpoint, Map<String, String> parameters) {
+	        SimpleRequest request = new SimpleRequest(Verb.GET, host + endpoint);
 
-	                if (parameters != null) {
-	                        for (Entry<String, String> parameter : parameters.entrySet()) {
-	                                request.addQuerystringParameter(parameter.getKey(), parameter.getValue());
-	                        }
+	        if (parameters != null) {
+	                for (Entry<String, String> parameter : parameters.entrySet()) {
+	                        request.addQuerystringParameter(parameter.getKey(), parameter.getValue());
 	                }
-	                
-	                SimpleResponse response = request.send();
-	                return response.getBody();
 	        }
+	                
+	        SimpleResponse response = request.send();
+	        return response.getBody();
+	}
 
 	private boolean checkConfigurationProperties() {
 		if ((ConfigurationProperties.CONSUMER_KEY != null && ConfigurationProperties.CONSUMER_KEY.length() > 0)
