@@ -1,7 +1,7 @@
 Open Photo API / Java Library packaged for Maven use
 =======================
 
-For library usage, refer to https://github.com/openphoto/openphoto-java
+For library usage, refer to https://github.com/photo/openphoto-java
 
 To use in your project : 
 
